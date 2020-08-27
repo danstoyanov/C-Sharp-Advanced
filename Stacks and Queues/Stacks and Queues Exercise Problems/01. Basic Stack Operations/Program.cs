@@ -22,12 +22,7 @@ namespace _01._Basic_Stack_Operations
                 .Select(int.Parse)
                 .ToArray();
 
-            var stack = new Stack<int>();
-
-            for (int i = 0; i < stackNums.Length; i++)
-            {
-                stack.Push(stackNums[i]);
-            }
+            var stack = new Stack<int>(stackNums);
 
             for (int i = 1; i <= toPop; i++)
             {
