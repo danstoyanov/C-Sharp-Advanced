@@ -2,60 +2,45 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace _03._Maximum_and_Minimum_Element
+namespace Stacks_and_Queues_Exercise_Problems
 {
     class Program
     {
         static void Main()
         {
-            int count = int.Parse(Console.ReadLine());
-            var stack = new Stack<int>();
+            int n = int.Parse(Console.ReadLine());
+            var myStack = new Stack<int>();
 
-            for (int i = 1; i <= count; i++)
+            for (int i = 1; i <= n; i++)
             {
-                var input = Console.ReadLine()
+                var querie = Console.ReadLine()
                     .Split()
                     .Select(int.Parse)
                     .ToArray();
 
-                switch (input[0])
+                switch (querie[0])
                 {
                     case 1:
-                        stack.Push(input[1]);
+                        int element = querie[1];
+                        myStack.Push(element);
                         break;
-                    case 2:
 
-                        if (stack.Count != 0)
-                        {
-                            stack.Pop();
-                        }
+                    case 2:
+                        if (myStack.Any()) myStack.Pop();
                         break;
+
                     case 3:
 
-                        if (stack.Count != 0)
-                        {
-                            Console.WriteLine(stack.Max());
-                        }
-
+                        if (myStack.Any()) Console.WriteLine(myStack.Max());
                         break;
-                    case 4:
 
-                        if (stack.Count != 0)
-                        {
-                            Console.WriteLine(stack.Min());
-                        }
+                    case 4:
+                        if (myStack.Any()) Console.WriteLine(myStack.Min());
                         break;
                 }
             }
 
-            if (stack.Count == 0)
-            {
-                Console.WriteLine();
-            }
-            else
-            {
-                Console.WriteLine(string.Join(", ", stack));
-            }
+            Console.WriteLine(string.Join(", ", myStack));
         }
     }
 }
