@@ -20,9 +20,7 @@ namespace _04._Fast_Food
 
             for (int i = 0; i < ordersArr.Length; i++)
             {
-                var currOrder = orders.Peek();
-
-                if (currOrder <= food)
+                if (orders.Peek() <= food)
                 {
                     food -= orders.Dequeue();
                 }
