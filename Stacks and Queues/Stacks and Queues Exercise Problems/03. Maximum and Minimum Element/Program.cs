@@ -30,7 +30,6 @@ namespace Stacks_and_Queues_Exercise_Problems
                         break;
 
                     case 3:
-
                         if (myStack.Any()) Console.WriteLine(myStack.Max());
                         break;
 
