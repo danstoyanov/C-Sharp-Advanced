@@ -8,6 +8,11 @@ namespace _05._Applied_Arithmetics
     {
         static void Main()
         {
+            Func<int, int> addFunc = x => x + 1;
+            Func<int, int> multiplyFunc = x => x * 2;
+            Func<int, int> subtractFunc = x => x - 1;
+            Action<int[]> printFunc = x => Console.WriteLine(string.Join(" ", x));
+
             var nums = Console.ReadLine()
                 .Split()
                 .Select(int.Parse)
@@ -17,23 +22,20 @@ namespace _05._Applied_Arithmetics
 
             while ((command = Console.ReadLine()) != "end")
             {
-                switch (command)
+                if (command.Contains("print"))
                 {
-                    case "add":
-                        nums = nums.Select(x => x + 1).ToList();
-                        break;
+                    printFunc(nums.ToArray());
+                }
+                else
+                {
+                    Func<int, int> test = command switch
+                    {
+                        "add" => addFunc,
+                        "multiply" => multiplyFunc,
+                        "subtract" => subtractFunc,
+                    };
 
-                    case "multiply":
-                        nums = nums.Select(x => x * 2).ToList();
-                        break;
-
-                    case "subtract":
-                        nums = nums.Select(x => x - 1).ToList();
-                        break;
-
-                    case "print":
-                        Console.WriteLine(string.Join(" ", nums));
-                        break;
+                    nums = nums.Select(test).ToList();
                 }
             }
         }
